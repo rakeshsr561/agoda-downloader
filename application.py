@@ -25,7 +25,7 @@ def extract_site_details_from_line(line):
     return dictionary
 
 
-def get_site_configs_list():
+def get_site_configs():
     lines = None
     try:
         f = open('site_details', 'r')
@@ -55,7 +55,7 @@ def extract_file_name(url):
 
 
 if __name__ == '__main__':
-    site_configs = get_site_configs_list()
+    site_configs = get_site_configs()
     methods = []
 
     for site_config in site_configs:
