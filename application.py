@@ -3,7 +3,7 @@ from config.site_config import SiteConfig
 from downloaders.downloader_factory import get_downloader
 import asyncio
 from urllib.parse import urlparse
-
+import os
 
 logging.config.fileConfig('config/logging.conf')
 logger = logging.getLogger('agoda')
@@ -57,10 +57,19 @@ def extract_file_name(url):
 if __name__ == '__main__':
     site_configs = get_site_configs()
     methods = []
+    print('Enter output directory')
+    path = input()
+
+    if path and not os.path.exists(path):
+        os.makedirs(path)
+        if path[len(path)-1] != '/':
+            path += '/'
+    if not path:
+        path = ''
 
     for site_config in site_configs:
         methods.append(get_downloader(site_config.protocol)(site_config,
-                                                            extract_file_name(site_config.url)).download_and_save())
+                                                            extract_file_name(site_config.url), path).download_and_save())
     loop = asyncio.get_event_loop()
     loop.run_until_complete(asyncio.wait(methods))
 
