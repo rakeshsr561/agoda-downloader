@@ -8,7 +8,7 @@ import unittest
 from config.site_config import SiteConfig
 
 
-class MyTest(TestCase):
+class TestDownloaderFactory(TestCase):
 
     def test_downloader_factory(self):
         self.assertIsInstance(HttpsDownloader(SiteConfig('p','u','h'), 'file'), get_downloader('https'))
