@@ -4,6 +4,6 @@ pysftp==0.2.9
 ftptool==0.7.1
 enum34==1.1.6
 urllib3==1.23
-paramiko==2.4.1
+paramiko==2.10.1
 requests==2.19.1
 pytest==3.7.1
